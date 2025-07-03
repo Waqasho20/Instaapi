@@ -3,19 +3,14 @@
 
     <application
         android:allowBackup="true"
-        android:label="InstaAPI"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:label="InstaAPI"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        
     </application>
-
 </manifest>
