@@ -1,16 +1,15 @@
 #!/bin/sh
+# -----------------------
+# Gradle wrapper script
+# -----------------------
 
-# Copyright 2015 the original author or authors.
-# Licensed under the Apache License, Version 2.0
+# Locate java
+if [ -n "$JAVA_HOME" ]; then
+  JAVA="$JAVA_HOME/bin/java"
+else
+  JAVA=java
+fi
 
-##############################################################################
-# Gradle start script for UN*X
-##############################################################################
-
-DIRNAME=$(dirname "$0")
-APP_BASE_NAME=$(basename "$0")
-APP_HOME=$(cd "$DIRNAME" && pwd)
-
-DEFAULT_JVM_OPTS=""
-
-exec "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" "$@"
+# Determine base directory
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+"$JAVA" -classpath "$DIR/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"
