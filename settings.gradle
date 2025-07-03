@@ -1,1 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url "https://chaquo.com/maven" } // ✅ Required
+    }
+}
+
+rootProject.name = "Instaapi"
 include ':app'
