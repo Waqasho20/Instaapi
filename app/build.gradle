@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'              // ✅ Must be first
-    id 'com.chaquo.python' version '12.0.0'    // ✅ Must be second
+    id 'com.android.application'      // ✅ must be before python plugin
+    id 'com.chaquo.python' version '12.0.0'
 }
 
 android {
@@ -21,7 +21,7 @@ android {
     sourceSets {
         main {
             java.srcDirs = ['src/main/java']
-            python.srcDir "src/main/python"     // ✅ Python source folder
+            python.srcDir 'src/main/python'   // ✅ point to python file
         }
     }
 
