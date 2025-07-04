@@ -1,28 +1,39 @@
+// Sabsay pehle plugins apply karein. Tarteeb (order) bohot zaroori hai.
 plugins {
-    id 'com.android.application' // ⚠️ Yeh pehle hona zaroori hai!
+    id 'com.android.application'
     id 'com.chaquo.python' version '12.0.0'
 }
 
 android {
+    // Android NDK ka version batana zaroori hai Chaquopy ke liye.
+    // Aap Android Studio ke SDK Manager se isay install kar sakte hain.
+    ndkVersion "25.2.9519653"
+
     namespace 'com.waqasho.instaapi'
-    compileSdkVersion 30
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.waqasho.instaapi"
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdk 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        python {
-            buildPython "python3"
+        // Alag-alag mobile processors ke liye support shaamil karein.
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
-    }
 
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/java']
-            python.srcDir 'src/main/python'
+        python {
+            // Python ka version batayein jo aap istemal karna chahte hain.
+            buildPython "3.11.5" // aap 3.8, 3.9, 3.10, etc. bhi istemal kar sakte hain
+
+            // Python libraries (e.g., requests, numpy) install karne ke liye.
+            pip {
+                // 'requirements.txt' file se libraries install karein.
+                install "requests"
+                // install -r "src/main/python/requirements.txt"
+            }
         }
     }
 
@@ -32,9 +43,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // Java 8 features ko enable karein jo aksar zaroori hoti hain.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Yeh block ghalat jagah par tha, isay yahan nahi hona chahiye.
+    // sourceSets {
+    //     main {
+    //         python.srcDir 'src/main/python'
+    //     }
+    // }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // Common dependency, maine add kar di hai
 }
