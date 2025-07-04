@@ -1,9 +1,10 @@
 plugins {
-    id 'com.android.application'      // ✅ must be before python plugin
+    id 'com.android.application' // ⚠️ Yeh pehle hona zaroori hai!
     id 'com.chaquo.python' version '12.0.0'
 }
 
 android {
+    namespace 'com.waqasho.instaapi'
     compileSdkVersion 30
 
     defaultConfig {
@@ -21,7 +22,7 @@ android {
     sourceSets {
         main {
             java.srcDirs = ['src/main/java']
-            python.srcDir 'src/main/python'   // ✅ point to python file
+            python.srcDir 'src/main/python'
         }
     }
 
